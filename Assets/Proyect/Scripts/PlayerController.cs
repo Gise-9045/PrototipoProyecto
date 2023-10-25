@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float tapJumpForce;
     [SerializeField] private float checkRadius;
+    
     #endregion SerializeField
 
     #region public
@@ -23,8 +24,11 @@ public class PlayerController : MonoBehaviour
 
     #endregion public
 
+    private Vector2 flipScale;
     private float horizontal; 
     private bool isFacingRight = true;
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter; 
 
     #endregion Variables
 
@@ -32,11 +36,11 @@ public class PlayerController : MonoBehaviour
     {
         physics.velocity = new Vector2(horizontal * speed, physics.velocity.y); 
 
-        //if(!isFacingRight && move > 0 )
+        //if(!isFacingRight && horizontal > 0 )
         //{
-        //    FlipPlayer(); 
+        //   FlipPlayer(); 
         //}
-        //else if(isFacingRight && move < 0 )
+        //else if(isFacingRight && horizontal < 0 )
         //{
         //    FlipPlayer(); 
         //}
@@ -45,18 +49,30 @@ public class PlayerController : MonoBehaviour
     #region JumpStaff
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded())
+        if(IsGrounded())
+        {
+            coyoteTimeCounter = coyoteTime; 
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+
+        if (context.performed && coyoteTimeCounter > 0f)
         {
             physics.velocity = new Vector2(physics.velocity.x, tapJumpForce);
         }
 
         if (context.performed && physics.velocity.y > 0f)
         {
-            physics.velocity = new Vector2(physics.velocity.x, physics.velocity.y * 0.5f);
+            physics.velocity = new Vector2(physics.velocity.x, physics.velocity.y * 0.3f);
+            coyoteTimeCounter = 0f; 
         }
+
+       // FlipPlayer(); 
     }
 
-    private bool isGrounded()
+    private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundcheck.position, checkRadius, groundLayer);
     }
@@ -66,10 +82,13 @@ public class PlayerController : MonoBehaviour
     #region MovePlayer
     private void FlipPlayer() //make the player flip to the side it's pressing
     {
-        isFacingRight = !isFacingRight;
-        Vector3 localScale = transform.localScale;
-        localScale.x *= 0.5f;
-        transform.localScale = localScale;
+        if(isFacingRight && horizontal <0f || !isFacingRight && horizontal > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            flipScale = transform.localScale;
+            flipScale.x *= -1f;
+            transform.localScale = flipScale;
+        }
     }
 
     public void MovePlayer(InputAction.CallbackContext context)
