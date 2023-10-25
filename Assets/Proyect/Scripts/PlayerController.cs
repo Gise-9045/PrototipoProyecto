@@ -1,57 +1,81 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem; 
 
 public class PlayerController : MonoBehaviour
 {
+    //MADE WITH NEW INPUT SYSTEM
 
+    #region Variables
 
+    #region SerializeField
+    [SerializeField] private Rigidbody2D physics; //rb
     [SerializeField] private float speed;
-    [SerializeField] private float jump;
+    [SerializeField] private float tapJumpForce;
+    [SerializeField] private float checkRadius;
+    #endregion SerializeField
 
-    [SerializeField] private float move;
-    [SerializeField] private Rigidbody2D physics;
+    #region public
 
-    private bool shouldjump;
-    private int counterJump; 
+    public Transform groundcheck;
+    public LayerMask groundLayer; //It's the layer of the gameObject
 
-    private void Start()
+    #endregion public
+
+    private float horizontal; 
+    private bool isFacingRight = true;
+
+    #endregion Variables
+
+    private void FixedUpdate()
     {
-        counterJump = 0;
+        physics.velocity = new Vector2(horizontal * speed, physics.velocity.y); 
+
+        //if(!isFacingRight && move > 0 )
+        //{
+        //    FlipPlayer(); 
+        //}
+        //else if(isFacingRight && move < 0 )
+        //{
+        //    FlipPlayer(); 
+        //}
     }
-    private void Update()
+
+    #region JumpStaff
+    public void Jump(InputAction.CallbackContext context)
     {
-        //movimiento del layer para los lados 
-        move = Input.GetAxis("Horizontal"); 
-
-        physics.velocity = new Vector2(speed*move, physics.velocity.y);
-
-        //movimiento del salto del player
-        if(Input.GetButtonDown("Jump") && shouldjump == false && counterJump < 2)
+        if (context.performed && isGrounded())
         {
-            physics.AddForce(new Vector2(physics.velocity.x, jump));
-            counterJump++;
-
-            Debug.Log(counterJump); 
+            physics.velocity = new Vector2(physics.velocity.x, tapJumpForce);
         }
 
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.gameObject.CompareTag("Ground"))
+        if (context.performed && physics.velocity.y > 0f)
         {
-           shouldjump = false; 
-           counterJump = 0;
+            physics.velocity = new Vector2(physics.velocity.x, physics.velocity.y * 0.5f);
         }
     }
 
-    private void OnCollisionExit2D(Collision2D other)
+    private bool isGrounded()
     {
-       if(other.gameObject.CompareTag("floor"))
-        {  
-           shouldjump = false;
-           counterJump = 0;
-        }
+        return Physics2D.OverlapCircle(groundcheck.position, checkRadius, groundLayer);
     }
+
+    #endregion JumpStaff
+
+    #region MovePlayer
+    private void FlipPlayer() //make the player flip to the side it's pressing
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 localScale = transform.localScale;
+        localScale.x *= 0.5f;
+        transform.localScale = localScale;
+    }
+
+    public void MovePlayer(InputAction.CallbackContext context)
+    {
+        horizontal = context.ReadValue<Vector2>().x;
+    }
+
+    #endregion MovePlayer
 }
