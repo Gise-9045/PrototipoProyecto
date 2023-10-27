@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 1403510352893442869}
   - component: {fileID: 3491701423502296289}
   - component: {fileID: 5090427433289834225}
+  - component: {fileID: 321174034539546180}
   m_Layer: 6
   m_Name: player
   m_TagString: Untagged
@@ -206,7 +207,7 @@ Transform:
   - {fileID: 3942513582653760276}
   - {fileID: 811870562587857923}
   m_Father: {fileID: 0}
-  m_RootOrder: -2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2025569166961771143
 SpriteRenderer:
@@ -466,11 +467,27 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0a8f85bb-bfd3-44a5-9e31-3b6491793dd7
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2402779d-aa27-42a6-868d-b5bfa79297c2
+    m_ActionName: Player/Attack/Interact[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &321174034539546180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6419510159068017693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0975cececb08f8e44bb218d27de46d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6617130185179572676
 GameObject:
   m_ObjectHideFlags: 0
