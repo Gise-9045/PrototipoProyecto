@@ -36,10 +36,10 @@ public class PlayerAttack : MonoBehaviour
             //ataco
             timeBetweenAttack = startTimeBetweeAttack;
         }
-        else
-        {
+        //else
+        //{
             timeBetweenAttack -= Time.deltaTime;
-        }
+        //}
 
         Debug.Log(timeBetweenAttack);
     }

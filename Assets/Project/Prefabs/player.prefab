@@ -146,7 +146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3976303270985330748}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: feetpos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 1403510352893442869}
   - component: {fileID: 3491701423502296289}
   - component: {fileID: 5090427433289834225}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ Transform:
   - {fileID: 3942513582653760276}
   - {fileID: 811870562587857923}
   m_Father: {fileID: 0}
-  m_RootOrder: -2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2025569166961771143
 SpriteRenderer:
@@ -336,8 +336,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physics: {fileID: 6047151635151054885}
   speed: 5
-  tapJumpForce: 0
-  checkRadius: 0
+  tapJumpForce: 10
+  checkRadius: 0.3
   groundcheck: {fileID: 3976303270985330748}
   groundLayer:
     serializedVersion: 2
@@ -466,6 +466,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0a8f85bb-bfd3-44a5-9e31-3b6491793dd7
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3491701423502296289}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2402779d-aa27-42a6-868d-b5bfa79297c2
+    m_ActionName: Player/Attack/Interact[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -480,7 +496,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 811870562587857923}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: attackPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
