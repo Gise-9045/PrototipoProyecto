@@ -32,18 +32,12 @@ public class PlayerController : MonoBehaviour
 
     #endregion Variables
 
+
+
     private void FixedUpdate()
     {
         physics.velocity = new Vector2(horizontal * speed, physics.velocity.y); 
 
-        //if(!isFacingRight && horizontal > 0 )
-        //{
-        //   FlipPlayer(); 
-        //}
-        //else if(isFacingRight && horizontal < 0 )
-        //{
-        //    FlipPlayer(); 
-        //}
     }
 
     private void OnDrawGizmosSelected()
@@ -52,38 +46,38 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(groundcheck.position, checkRadius);
     }
 
-    #region JumpStaff
-    public void Jump(InputAction.CallbackContext context)
-    {
-        if(IsGrounded())
-        {
-            coyoteTimeCounter = coyoteTime; 
-        }
-        else
-        {
-            coyoteTimeCounter -= Time.deltaTime;
-        }
+    //#region JumpStaff
+    //public void Jump(InputAction.CallbackContext context)
+    //{
+    //    if(IsGrounded())
+    //    {
+    //        coyoteTimeCounter = coyoteTime; 
+    //    }
+    //    else
+    //    {
+    //        coyoteTimeCounter -= Time.deltaTime;
+    //    }
 
-        if (context.performed && coyoteTimeCounter > 0f)
-        {
-            physics.velocity = new Vector2(physics.velocity.x, tapJumpForce);
-        }
+    //    if (context.performed && coyoteTimeCounter < 0f) // tap jump
+    //    {
+    //        physics.velocity = new Vector2(physics.velocity.x, tapJumpForce);
+    //    }
 
-        if (context.performed && physics.velocity.y > 0f)
-        {
-            physics.velocity = new Vector2(physics.velocity.x, physics.velocity.y * 0.3f);
-            coyoteTimeCounter = 0f; 
-        }
+    //    else if (context.performed && physics.velocity.y > 0f) // hold jump 
+    //    {
+    //        physics.velocity = new Vector2(physics.velocity.x, physics.velocity.y * 0.3f);
+    //        coyoteTimeCounter = 0f; 
+    //    }
 
-       // FlipPlayer(); 
-    }
+    //   // FlipPlayer(); 
+    //}
 
-    private bool IsGrounded()
-    {
-        return Physics2D.OverlapCircle(groundcheck.position, checkRadius, groundLayer);
-    }
+    //private bool IsGrounded() //check if player is on the ground 
+    //{
+    //    return Physics2D.OverlapCircle(groundcheck.position, checkRadius, groundLayer);
+    //}
 
-    #endregion JumpStaff
+    //#endregion JumpStaff
 
     #region MovePlayer
     private void FlipPlayer() //make the player flip to the side it's pressing
