@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4648674142714962541}
   - component: {fileID: 6143532899682338765}
   - component: {fileID: 6704432993252515970}
+  - component: {fileID: 5923810701914555816}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -67,7 +68,7 @@ Transform:
   - {fileID: 3268036126475216654}
   - {fileID: 828880763582294971}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8475337645085542425
 SpriteRenderer:
@@ -199,7 +200,7 @@ MonoBehaviour:
   speed: 5
   tapJumpForce: 10
   checkRadius: 0.3
-  groundcheck: {fileID: 0}
+  groundcheck: {fileID: 3268036126475216654}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -312,11 +313,41 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 2402779d-aa27-42a6-868d-b5bfa79297c2
     m_ActionName: Player/Attack/Interact[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5923810701914555816}
+        m_TargetAssemblyTypeName: SlowFallingController, Assembly-CSharp
+        m_MethodName: SlowFalling
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 17820d14-2618-493a-ab69-6d8b7add840f
+    m_ActionName: Player/SlowFalling[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5923810701914555816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577943500663846074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0975cececb08f8e44bb218d27de46d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 4648674142714962541}
+  movement: 0
 --- !u!1 &8115918070672240435
 GameObject:
   m_ObjectHideFlags: 0
