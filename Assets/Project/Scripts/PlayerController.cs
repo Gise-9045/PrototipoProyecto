@@ -49,9 +49,9 @@ public class PlayerController : MonoBehaviour
     //#region JumpStaff
     //public void Jump(InputAction.CallbackContext context)
     //{
-    //    if(IsGrounded())
+    //    if (IsGrounded())
     //    {
-    //        coyoteTimeCounter = coyoteTime; 
+    //        coyoteTimeCounter = coyoteTime;
     //    }
     //    else
     //    {
@@ -66,10 +66,10 @@ public class PlayerController : MonoBehaviour
     //    else if (context.performed && physics.velocity.y > 0f) // hold jump 
     //    {
     //        physics.velocity = new Vector2(physics.velocity.x, physics.velocity.y * 0.3f);
-    //        coyoteTimeCounter = 0f; 
+    //        coyoteTimeCounter = 0f;
     //    }
 
-    //   // FlipPlayer(); 
+    //    // FlipPlayer(); 
     //}
 
     //private bool IsGrounded() //check if player is on the ground 
