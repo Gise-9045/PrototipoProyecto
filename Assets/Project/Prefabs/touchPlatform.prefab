@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 8779896989734737190}
   - component: {fileID: 1720503510682780555}
   - component: {fileID: 658301798368252646}
+  - component: {fileID: 2397055939154831917}
+  - component: {fileID: 1631083142544582082}
   m_Layer: 6
   m_Name: touchPlatform
   m_TagString: Ground
@@ -21,21 +23,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7542244781282470516
-Transform:
+--- !u!224 &7542244781282470516
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7051897812800139678}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.86, y: 0.64, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.86, y: 0.64}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &6838466707553535387
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -191,5 +198,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06850c1f88c5ac445a5c49ef7087b0f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usedNumTouches: 0
+  numOfTouches: 4
   rb: {fileID: 8779896989734737190}
   platformPrefab: {fileID: 7051897812800139678}
+--- !u!114 &2397055939154831917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7051897812800139678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1047f6f1bb3838419070e02a56a2d1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchPlatform: {fileID: 658301798368252646}
+  displayText: {fileID: 0}
+  gameObject: {fileID: 7051897812800139678}
+--- !u!222 &1631083142544582082
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7051897812800139678}
+  m_CullTransparentMesh: 1

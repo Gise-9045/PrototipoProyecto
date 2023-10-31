@@ -9,7 +9,7 @@ public class touchPlatform : MonoBehaviour
     private float destroyDelay = 1f;
     private float respawnDelay = 3.5f;
    
-    private float usedNumTouches;
+    public float usedNumTouches;
     [SerializeField] private float numOfTouches = 4f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject platformPrefab; // Assign the platform prefab in the Inspector
